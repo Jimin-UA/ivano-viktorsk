@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Устав міста ІВАНО-ВІКТОРСЬК</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* БАЗОВІ ЗМІННІ ТА СТИЛІ */
+        :root {
+            --color-primary: #1c2e40; /* Темний синій/майже чорний (основа) */
+            --color-secondary: #f4f4f4; /* Світлий сіро-беж (фон) */
+            --color-accent: #ff914d; /* Яскравий помаранчевий/Охра (Акцент) */
+            --font-main: 'Inter', sans-serif;
+            --font-title: 'Oswald', sans-serif; 
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--color-primary);
+            margin: 0;
+            background-color: var(--color-secondary);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 1. ШАПКА ТА НАВІГАЦІЯ */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            background-color: white;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img.crest {
+            height: 40px; 
+            margin-right: 15px;
+            transition: transform 0.3s;
+        }
+        
+        .logo:hover img.crest {
+            transform: scale(1.05) rotate(-2deg);
+        }
+
+        .logo h1 {
+            font-family: var(--font-title);
+            font-size: 1.6em;
+            letter-spacing: 1px;
+            margin: 0;
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--color-primary);
+            margin-left: 25px;
+            font-weight: 500;
+            transition: color 0.3s, border-bottom 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            padding-bottom: 3px;
+        }
+
+        .nav-menu a:hover {
+            color: var(--color-accent);
+            border-bottom: 2px solid var(--color-accent);
+        }
+
+        /* 2. СЕКЦІЇ ТА ЗАГОЛОВКИ */
+        .section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: var(--font-title);
+            font-size: 2.8em;
+            margin-bottom: 50px;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        
+        /* 3. FOOTER */
+        .footer {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 40px 0;
+            font-size: 0.9em;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .footer-info {
+            text-align: left;
+            flex-grow: 1;
+        }
+
+        .footer-logos {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .footer-logos img {
+            height: 35px; 
+            filter: invert(1); 
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-logos img:hover {
+            opacity: 1;
+        }
+        
+        /* 4. СТИЛІ ДЛЯ СТОРІНКИ УСТАВУ */
+        .charter-section {
+            text-align: left;
+            padding: 40px;
+            background-color: white;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            border-left: 5px solid var(--color-accent);
+        }
+
+        .charter-section h2 {
+            font-family: var(--font-title);
+            font-size: 2em;
+            color: var(--color-primary);
+            border-bottom: 2px solid var(--color-secondary);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .charter-section h3 {
+            font-size: 1.2em;
+            color: var(--color-accent);
+            margin-top: 25px;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        
+        .charter-section p {
+            margin-bottom: 15px;
+            padding-left: 15px;
+            border-left: 3px solid rgba(255, 145, 77, 0.3);
+        }
+        
+        .charter-list {
+            list-style: disc;
+            padding-left: 40px;
+            margin-bottom: 15px;
+        }
+        
+        .charter-list li {
+            margin-bottom: 8px;
+        }
+        
+        .charter-intro {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="Івано-Вікторськ.png" alt="Герб Івано-Вікторськ" class="crest">
+                <h1>ІВАНО-ВІКТОРСЬК</h1>
+            </a>
+            <nav class="nav-menu">
+                <a href="index.html">Головна</a>
+                <a href="city.html">Місто</a>
+                <a href="charter.html" style="color: var(--color-accent); border-bottom: 2px solid var(--color-accent);">Устав</a>
+                <a href="mayor.html">Мерія</a>
+                <a href="architecture.html">Архітектура</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section" style="padding-bottom: 40px;">
+        <div class="container">
+            <h1 class="section-title">
+                <span style="color: var(--color-accent); margin-right: 10px;">&#x1F4DC;</span>
+                Устав міста Івано‑Вікторськ
+            </h1>
+            
+            <div class="charter-intro">
+                <p style="font-size: 1.1em; font-weight: 500;">Цей Устав визначає правовий статус, організаційну структуру та повноваження органів місцевого самоврядування міста Івано-Вікторськ, встановлюючи баланс між інтересами Князівства та правом громади на самоврядування.</p>
+            </div>
+            
+            <div class="charter-section">
+                <h2>Розділ I. Загальні положення</h2>
+                
+                <h3>Стаття 1. Поняття міста</h3>
+                <p>Місто Івано‑Вікторськ є особливим утворенням Північного Підвязнова, що має постійне населення, територію та органи самоврядування з власними повноваженнями, визначеними цим Уставом. Місто не є автономним суб’єктом, проте має право культурної, економічної та адміністративної ініціативи. Заснування міста відбувається указом Князя та затверджується законом.</p>
+
+                <h3>Стаття 2. Цілі створення міста</h3>
+                <ul class="charter-list">
+                    <li>Забезпечення самоврядування мешканців.</li>
+                    <li>Розвиток інфраструктури, культури та освіти.</li>
+                    <li>Реалізація прав та свобод жителів на місцевому рівні.</li>
+                    <li>Сприяння європейській інтеграції та міжнародному співробітництву.</li>
+                </ul>
+
+                <h3>Стаття 3. Символи міста</h3>
+                <p>Місто має герб, прапор та гімн, що затверджуються рішенням міської ради і скріплюються печаткою Канцелярії Князівства.</p>
+            </div>
+
+            <div class="charter-section">
+                <h2>Розділ II. Устрій і управління</h2>
+                
+                <h3>Стаття 4. Органи міського управління</h3>
+                <p>Основними органами управління є:</p>
+                <ul class="charter-list">
+                    <li>Міська Рада (представницький орган);</li>
+                    <li>Виконавчий комітет (виконавчий орган);</li>
+                    <li>Міський голова (мер).</li>
+                </ul>
+                <p>Порядок обрання визначається окремим актом про вибори.</p>
+
+                <h3>Стаття 5. Принципи управління</h3>
+                <ul class="charter-list">
+                    <li>Законність та прозорість діяльності органів.</li>
+                    <li>Участь мешканців у прийнятті рішень.</li>
+                    <li>Баланс між інтересами Князівства та самоврядування.</li>
+                    <li>Недопустимість узурпації влади та корупції.</li>
+                </ul>
+
+                <h3>Стаття 6. Фінанси міста</h3>
+                <p>Місто має власний бюджет, формований із:</p>
+                <ul class="charter-list">
+                    <li>місцевих податків і зборів;</li>
+                    <li>відрахувань з бюджету Князівства;</li>
+                    <li>міжнародних грантів та програм підтримки.</li>
+                </ul>
+                <p>Фінансова діяльність підлягає контролю Відомства Грошей та Ревізійної Палати.</p>
+            </div>
+            
+            <div class="charter-section">
+                <h2>Розділ III. Компетенція міста</h2>
+
+                <h3>Стаття 7. Власні повноваження міста</h3>
+                <ul class="charter-list">
+                    <li>Управління комунальною власністю.</li>
+                    <li>Організація транспортної, освітньої, культурної та соціальної інфраструктури.</li>
+                    <li>Збереження історичної та культурної спадщини.</li>
+                    <li>Підтримка підприємництва та сталого розвитку.</li>
+                    <li>Реалізація культурної політики, що відображає дух регіону.</li>
+                </ul>
+
+                <h3>Стаття 8. Делеговані повноваження</h3>
+                <ul class="charter-list">
+                    <li>Виконання окремих функцій центральної влади за дорученням Канцелярії.</li>
+                    <li>Обов’язкова звітність та контроль.</li>
+                </ul>
+            </div>
+
+            <div class="charter-section">
+                <h2>Розділ IV. Європейський та український досвід</h2>
+
+                <h3>Стаття 9. Європейська хартія місцевого самоврядування</h3>
+                <p>Органи міста керуються принципами Хартії (Страсбург, 1985):</p>
+                <ul class="charter-list">
+                    <li>субсидіарність (рішення ближче до громадянина);</li>
+                    <li>фінансова самостійність;</li>
+                    <li>право на асоціації міст та міжнародне співробітництво.</li>
+                </ul>
+                <p>Місто може брати участь у європейських ініціативах розвитку місцевого самоврядування.</p>
+
+                <h3>Стаття 10. Українська модель</h3>
+                <p>У діяльності міста враховуються принципи українських територіальних громад:</p>
+                <ul class="charter-list">
+                    <li>пряме участь мешканців у питаннях бюджету;</li>
+                    <li>місцеві ініціативи та публічні слухання;</li>
+                    <li>відповідальність мера та депутатів перед громадою.</li>
+                </ul>
+                <p>Місто може мати побратимські зв’язки з українськими громадами.</p>
+            </div>
+            
+            <div class="charter-section">
+                <h2>Розділ V. Особливі статуси</h2>
+
+                <h3>Стаття 11. Особливі міста</h3>
+                <p>За рішенням Князя окремі міста можуть бути визнані культурними, науковими, технологічними або віртуальними центрами. На такі міста поширюються всі норми цього Уставу, якщо інше не встановлено указом Князя.</p>
+
+                <h3>Стаття 12. Припинення статусу міста</h3>
+                <p>Статус може бути скасований лише законом, якщо:</p>
+                <ul class="charter-list">
+                    <li>населення покинуло територію;</li>
+                    <li>місто порушує Конституцію або Устав Князівства.</li>
+                </ul>
+            </div>
+
+            <div class="charter-section">
+                <h2>Розділ VI. Заключні положення</h2>
+
+                <h3>Стаття 13. Перехідні положення</h3>
+                <p>Першим містом Північного Підвязнова визнається Петрополіс. Другим містом – Івано‑Вікторськ. До ухвалення підзаконних актів їхня діяльність регулюється цим Уставом та указами Князя.</p>
+
+                <h3>Стаття 14. Вступ у силу</h3>
+                <p>Устав набирає чинності з моменту його оприлюднення і визначає правовий статус Івано‑Вікторська.</p>
+            </div>
+
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-info">
+                <p>Івано-Вікторськ. Твій віртуальний європейський дім. &copy; Князівство.</p>
+                <p style="margin-top: 5px;">Створено як політична та культурна репрезентація в цифровому просторі.</p>
+            </div>
+            
+            <div class="footer-logos">
+                <img src="Івано-Вікторськ.png" alt="Герб Івано-Вікторськ" title="Герб Івано-Вікторськ">
+                <img src="APDPN.png" alt="Логотип APDPN" title="Цифрова інфраструктура Князівства (APDPN)">
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

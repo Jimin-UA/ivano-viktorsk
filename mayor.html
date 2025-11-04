@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мерія ІВАНО-ВІКТОРСЬК: Голова та Органи Управління</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* БАЗОВІ ЗМІННІ ТА СТИЛІ */
+        :root {
+            --color-primary: #1c2e40; /* Темний синій/майже чорний (основа) */
+            --color-secondary: #f4f4f4; /* Світлий сіро-беж (фон) */
+            --color-accent: #ff914d; /* Яскравий помаранчевий/Охра (Акцент) */
+            --font-main: 'Inter', sans-serif;
+            --font-title: 'Oswald', sans-serif; 
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--color-primary);
+            margin: 0;
+            background-color: var(--color-secondary);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 1. ШАПКА ТА НАВІГАЦІЯ */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            background-color: white;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img.crest {
+            height: 40px; 
+            margin-right: 15px;
+            transition: transform 0.3s;
+        }
+        
+        .logo:hover img.crest {
+            transform: scale(1.05) rotate(-2deg);
+        }
+
+        .logo h1 {
+            font-family: var(--font-title);
+            font-size: 1.6em;
+            letter-spacing: 1px;
+            margin: 0;
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--color-primary);
+            margin-left: 25px;
+            font-weight: 500;
+            transition: color 0.3s, border-bottom 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            padding-bottom: 3px;
+        }
+
+        .nav-menu a:hover {
+            color: var(--color-accent);
+            border-bottom: 2px solid var(--color-accent);
+        }
+
+        /* 2. СЕКЦІЇ ТА ЗАГОЛОВКИ */
+        .section {
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: var(--font-title);
+            font-size: 2.8em;
+            margin-bottom: 50px;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        
+        /* 3. FOOTER */
+        .footer {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 40px 0;
+            font-size: 0.9em;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .footer-info {
+            text-align: left;
+            flex-grow: 1;
+        }
+
+        .footer-logos {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .footer-logos img {
+            height: 35px; 
+            filter: invert(1); 
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-logos img:hover {
+            opacity: 1;
+        }
+        
+        /* 4. СТИЛІ ДЛЯ СТОРІНКИ МЕРІЇ */
+        
+        .mayor-intro {
+            display: flex;
+            gap: 40px;
+            text-align: left;
+            margin-top: 50px;
+            align-items: flex-start;
+        }
+        
+        .mayor-photo {
+            flex: 0 0 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            background: var(--color-primary) url('Мерія/Голова.png') no-repeat center center/cover;
+            height: 400px; 
+        }
+        
+        .mayor-details {
+            flex-grow: 1;
+        }
+        
+        .mayor-details h2 {
+            font-family: var(--font-title);
+            font-size: 2.2em;
+            color: var(--color-accent);
+            margin-top: 0;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+        
+        .mayor-details h4 {
+            font-weight: 600;
+            font-size: 1.1em;
+            margin-top: 0;
+            color: var(--color-primary);
+        }
+
+        .mayor-details p {
+            font-size: 1.05em;
+            margin-bottom: 1.5em;
+        }
+        
+        .mayor-details ul {
+            list-style: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        
+        .mayor-details ul li {
+            background-color: #ffffff;
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            border-left: 4px solid var(--color-accent);
+            font-weight: 600;
+            color: var(--color-primary);
+        }
+        
+        .mayor-details ul li strong {
+            font-weight: 700;
+            color: var(--color-primary);
+        }
+        
+        .organ-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .organ-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            text-align: left;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 5px solid var(--color-primary);
+        }
+        
+        .organ-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .organ-card h4 {
+            font-family: var(--font-title);
+            font-size: 1.5em;
+            color: var(--color-primary);
+            margin-top: 0;
+            border-bottom: 2px solid var(--color-accent);
+            padding-bottom: 5px;
+        }
+        
+        .organ-card p {
+            font-size: 0.95em;
+            margin-bottom: 0;
+        }
+        
+        .organ-card p strong {
+            font-weight: 700;
+            color: var(--color-accent);
+        }
+        
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="Івано-Вікторськ.png" alt="Герб Івано-Вікторськ" class="crest">
+                <h1>ІВАНО-ВІКТОРСЬК</h1>
+            </a>
+            <nav class="nav-menu">
+                <a href="index.html">Головна</a>
+                <a href="city.html">Місто</a>
+                <a href="charter.html">Устав</a>
+                <a href="mayor.html" style="color: var(--color-accent); border-bottom: 2px solid var(--color-accent);">Мерія</a>
+                <a href="architecture.html">Архітектура</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="section">
+        <div class="container">
+            <h3 class="section-title">
+                <span style="color: var(--color-accent); margin-right: 10px;">&#x1F1FA;&#x1F1E6;</span>
+                Міська Адміністрація: Голова Івано-Вікторська
+            </h3>
+            
+            <div class="mayor-intro">
+                <div class="mayor-photo" title="Богдан Левченко, Голова міста Івано-Вікторськ">
+                    
+                </div>
+                
+                <div class="mayor-details">
+                    <h2>Богдан Левченко</h2>
+                    <h4>Голова міста Івано-Вікторськ</h4>
+                    <ul>
+                        <li><strong>Вік:</strong> 60 років</li>
+                        <li><strong>Спеціалізація:</strong> Освіта, Культурна діяльність, Місцева політика</li>
+                        <li><strong>Головне завдання:</strong> Зробити Івано-Вікторськ простором для творчості, освіти та культурного обміну.</li>
+                    </ul>
+                    
+                    <p>Богдан Левченко — це мудрий і стриманий керівник, чия кар'єра збудована на <strong>захисті та розвитку української культури</strong> та історичної спадщини. Він розпочав свій шлях у сфері освіти та культурної діяльності, організовуючи виставки та фестивалі, а згодом став депутатом міської ради.</p>
+                    
+                    <p>Його політична діяльність завжди була сфокусована на відновленні історичних будівель та підтримці громади. Очоливши Івано-Вікторськ, він зосередився на перетворенні міста на <strong>культурний центр та полувіртуальну платформу</strong> для громадських ініціатив, керуючись принципом знаходження компромісів та мудрості.</p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <section class="section" style="background-color: white; padding-top: 40px;">
+        <div class="container">
+            <h3 class="section-title">
+                <span style="color: var(--color-accent); margin-right: 10px;">&#x1F3DB;</span>
+                Структура Міського Управління (Статті 4-6)
+            </h3>
+            <p style="max-width: 900px; margin: 0 auto 50px; font-size: 1.05em;">Управління містом здійснюється на основі принципів законності, прозорості та участі мешканців, як це визначено в Уставі Князівства. Основні органи управління відповідають за представництво, виконання рішень та фінансову прозорість.</p>
+            
+            <div class="organ-grid">
+                
+                <div class="organ-card">
+                    <h4>Міська Рада (Представницький орган)</h4>
+                    <p><strong>Функція:</strong> Законодавча гілка влади. Відповідає за затвердження міського бюджету та стратегічних програм розвитку. <br><strong>Принцип:</strong> Забезпечує **участь мешканців у прийнятті рішень** та підтримує **законність і прозорість** діяльності органів управління.</p>
+                </div>
+                
+                <div class="organ-card">
+                    <h4>Виконавчий комітет (Виконавчий орган)</h4>
+                    <p><strong>Функція:</strong> Забезпечує практичне виконання рішень Міської Ради та розпоряджень Міського голови (мера). Здійснює оперативне управління містом. <br><strong>Принцип:</strong> Відповідає за підтримання **балансу між інтересами Князівства та міського самоврядування**.</p>
+                </div>
+                
+                <div class="organ-card">
+                    <h4>Міський Голова (Мер)</h4>
+                    <p><strong>Функція:</strong> Голова виконавчої влади та вища посадова особа міста. Очолює Виконавчий комітет та представляє місто на зовнішньому рівні. <br><strong>Принцип:</strong> Є гарантом **недопустимості узурпації влади та корупції**. Порядок його обрання визначається окремим актом про вибори.</p>
+                </div>
+                
+                <div class="organ-card">
+                    <h4>Фінанси Міста та Контроль</h4>
+                    <p><strong>Бюджет:</strong> Місто має власний бюджет, що формується з місцевих податків, відрахувань з бюджету Князівства, а також міжнародних грантів. <br><strong>Контроль:</strong> Фінансова діяльність підлягає нагляду **Відомства Грошей** та **Ревізійної Палати** для забезпечення прозорості (Стаття 6).</p>
+                </div>
+
+            </div>
+            
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-info">
+                <p>Івано-Вікторськ. Твій віртуальний європейський дім. &copy; Князівство.</p>
+                <p style="margin-top: 5px;">Створено як політична та культурна репрезентація в цифровому просторі.</p>
+            </div>
+            
+            <div class="footer-logos">
+                <img src="Івано-Вікторськ.png" alt="Герб Івано-Вікторськ" title="Герб Івано-Вікторськ">
+                <img src="APDPN.png" alt="Логотип APDPN" title="Цифрова інфраструктура Князівства (APDPN)">
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Архітектура Івано-Вікторська: Міський Код</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* СТИЛІ БЕЗ ЗМІН */
+        :root {
+            --color-primary: #1c2e40;
+            --color-secondary: #f4f4f4;
+            --color-accent: #ff914d;
+            --font-main: 'Inter', sans-serif;
+            --font-title: 'Oswald', sans-serif; 
+        }
+        body {
+            font-family: var(--font-main);
+            color: var(--color-primary);
+            margin: 0;
+            background-color: var(--color-secondary);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+        * { box-sizing: border-box; }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        .header {
+            display: flex; justify-content: center;
+            padding: 10px 0; border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+            position: sticky; top: 0; background-color: white; z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+        .header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { display: flex; align-items: center; text-decoration: none; }
+        .logo img.crest { height: 40px; margin-right: 15px; transition: transform 0.3s; }
+        .logo:hover img.crest { transform: scale(1.05) rotate(-2deg); }
+        .logo h1 { font-family: var(--font-title); font-size: 1.6em; letter-spacing: 1px; margin: 0; color: var(--color-primary); font-weight: 700; }
+        .nav-menu a {
+            text-decoration: none; color: var(--color-primary); margin-left: 25px;
+            font-weight: 500; transition: color 0.3s, border-bottom 0.3s;
+            text-transform: uppercase; font-size: 0.9em; padding-bottom: 3px;
+            white-space: nowrap;
+        }
+        .nav-menu a:hover { color: var(--color-accent); border-bottom: 2px solid var(--color-accent); }
+        .hero-internal { padding: 60px 0; background-color: white; border-bottom: 1px solid #ddd; }
+        .section-title {
+            font-family: var(--font-title); font-size: 3.5em; text-align: center;
+            margin-bottom: 20px; color: var(--color-primary); text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        .subtitle { text-align: center; font-size: 1.2em; color: #666; margin-bottom: 50px; }
+        .architecture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 50px 0 80px;
+        }
+        .arch-card {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: default;
+        }
+        .arch-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+        .arch-card img {
+            width: 100%;
+            height: 250px; 
+            object-fit: cover;
+            display: block;
+        }
+        .card-content {
+            padding: 20px;
+            min-height: 180px; 
+            display: flex;
+            flex-direction: column;
+        }
+        .card-content h4 {
+            font-family: var(--font-title);
+            font-size: 1.4em;
+            color: var(--color-accent);
+            margin-top: 0;
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
+        .card-content p {
+            font-size: 0.95em;
+            color: #555;
+            margin: 0;
+        }
+        .footer { background-color: var(--color-primary); color: white; padding: 40px 0; font-size: 0.9em; }
+        .footer-content { display: flex; justify-content: space-between; align-items: center; gap: 40px; }
+        .footer-info { text-align: left; flex-grow: 1; }
+        .footer-logos { display: flex; align-items: center; gap: 20px; }
+        .footer-logos img { height: 35px; filter: invert(1); opacity: 0.8; transition: opacity 0.3s; }
+        @media (max-width: 1024px) {
+            .nav-menu a { margin-left: 15px; }
+            .section-title { font-size: 2.5em; }
+        }
+        @media (max-width: 768px) {
+            .header .container { flex-direction: column; gap: 10px; }
+            .nav-menu { margin-top: 10px; display: flex; flex-wrap: wrap; justify-content: center; }
+            .nav-menu a { margin: 5px 10px; }
+            .section-title { font-size: 2em; margin-bottom: 10px; }
+            .subtitle { font-size: 1em; margin-bottom: 30px; }
+            .architecture-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="Івано-Вікторськ.png" alt="Герб Івано-Вікторськ" class="crest">
+                <h1>ІВАНО-ВІКТОРСЬК</h1>
+            </a>
+            <nav class="nav-menu">
+                <a href="index.html">Головна</a>
+                <a href="city.html">Місто</a>
+                <a href="charter.html">Статут</a>
+                <a href="mayor.html">Мерія</a>
+                <a href="architecture.html" style="color: var(--color-accent); border-bottom: 2px solid var(--color-accent);">Архітектура</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero-internal">
+        <div class="container">
+            <h2 class="section-title">АРХІТЕКТУРНИЙ КОД МІСТА</h2>
+            <p class="subtitle">Архітектура Івано-Вікторська поєднує класичні європейські форми з елементами українського модерну, створюючи унікальний віртуальний простір.</p>
+        </div>
+    </section>
+
+    <section class="container">
+        
+        <div class="architecture-grid">
+            
+            <div class="arch-card">
+                <img src="Architecture/1.jpeg" alt="Нічна вулиця України">
+                <div class="card-content">
+                    <h4>Вулиця України (Нічна Панорама)</h4>
+                    <p>Нічний вигляд однієї з центральних артерій міста. У світлі ліхтарів старовинна архітектура набуває нового, містичного виміру.</p>
+                </div>
+            </div>
+            
+            <div class="arch-card">
+                <img src="Architecture/2.jpeg" alt="Національний Університет міста">
+                <div class="card-content">
+                    <h4>Національний Університет</h4>
+                    <p>Головний освітній та науковий центр, що є втіленням класицизму та академічної строгості.</p>
+                </div>
+            </div>
+            
+            <div class="arch-card">
+                <img src="Architecture/3.jpeg" alt="Дім номер 27 на вулиці Івана Франка">
+                <div class="card-content">
+                    <h4>Дім №27, вул. Івана Франка</h4>
+                    <p>«Зелене чудовисько» — будинок підприємця Гриневича. Стоїть як нагадування, що у місті, де кожен цеглинкою пише історію, байдужість — найгірший злочин.</p>
+                </div>
+            </div>
+            
+            <div class="arch-card">
+                <img src="Architecture/4.jpeg" alt="Портрет Едварда Грабовського">
+                <div class="card-content">
+                    <h4>Едвард Грабовський (1854–1911)</h4>
+                    <p>Купець, промисловець, власник Івано-Вікторської газівні. Людина, яка принесла світло на вулиці міста.</p>
+                </div>
+            </div>
+            
+            <div class="arch-card">
+                <img src="Architecture/5.jpeg" alt="Вид збоку на Газівню Грабовського">
+                <div class="card-content">
+                    <h4>Міська Газівня (Вигляд збоку)</h4>
+                    <p>Перша промислова установа міста, збудована Едвардом Грабовським. Ворота несуть напис: «Хай буде світло, і хай буде людське серце».</p>
+                </div>
+            </div>
+            
+            <div class="arch-card">
+                <img src="Architecture/6.jpeg" alt="Будинок Казімєжа Домбровського на вул. Івана Франка">
+                <div class="card-content">
+                    <h4>Дім Казімєжа Домбровського</h4>
+                    <p>Розкішна кам'яниця на вулиці Івана Франка, спроектована Отто фон Льовенфельдом. Фасад із ліпниною у формі лаврового вінка.</p>
+                </div>
+            </div>
+            
+            <div class="arch-card">
+                <img src="Architecture/7.jpeg" alt="Загальна нічна панорама Івано-Вікторська">
+                <div class="card-content">
+                    <h4>Загальна Нічна Панорама</h4>
+                    <p>Осяяне вогнями місто, що простягається у віртуальний простір. Панорама демонструє контраст між старим та новим будівництвом.</p>
+                </div>
+            </div>
+            
+            <div class="arch-card">
+                <img src="Architecture/8.jpeg" alt="Вулиця Торгова">
+                <div class="card-content">
+                    <h4>Вулиця Торгова</h4>
+                    <p>Жвава вулиця, де сходяться міські ринки та магазині. Тут архітектура є більш функціональною, ніж декоративною.</p>
+                </div>
+            </div>
+
+            <div class="arch-card">
+                <img src="Architecture/9.jpeg" alt="Площа Університетська">
+                <div class="card-content">
+                    <h4>Площа Університетська</h4>
+                    <p>Центральна площа перед головним корпусом Університету. Місце студентських зібрань та міських свят.</p>
+                </div>
+            </div>
+            
+            <div class="arch-card">
+                <img src="Architecture/10.jpeg" alt="Дім Шандора Кереша">
+                <div class="card-content">
+                    <h4>Дім Шандора Кереша</h4>
+                    <p>Кам'яниця угорського лікаря на вулиці Івана Франка, прикрашена теракотовими балконами, які, мовби у «вінках сонця».</p>
+                </div>
+            </div>
+            
+            <div class="arch-card">
+                <img src="Architecture/11.jpeg" alt="Будівля міської друкарні">
+                <div class="card-content">
+                    <h4>Міська Друкарня «І.В.»</h4>
+                    <p>Будівля, де друкувалися перші міські газети та офіційні документи Князівства. Зразок промислового модерну.</p>
+                </div>
+            </div>
+            
+            <div class="arch-card">
+                <img src="Architecture/12.jpeg" alt="Старий залізничний вокзал">
+                <div class="card-content">
+                    <h4>Залізничний Вокзал (Старий)</h4>
+                    <p>Архітектурна пам'ятка, що символізує епоху розквіту міжміських віртуальних сполучень.</p>
+                </div>
+            </div>
+
+            <div class="arch-card">
+                <img src="Architecture/13.jpeg" alt="Дім єврея на вулиці України">
+                <div class="card-content">
+                    <h4>Будинок на Вулиці України (Єврейський квартал)</h4>
+                    <p>Кам'яниця, що належала єврейському купцю, вирізняється характерними елементами декору, що відображають мультикультурну історію міста.</p>
+                </div>
+            </div>
+
+            <div class="arch-card">
+                <img src="Architecture/14.jpeg" alt="Дім єврея на вулиці України, інший ракурс">
+                <div class="card-content">
+                    <h4>Будинок на Вулиці України (Ракурс 2)</h4>
+                    <p>Інший погляд на історичний будинок, що підкреслює його унікальну геометрію та інтеграцію у міський ансамбль.</p>
+                </div>
+            </div>
+            
+            <div class="arch-card">
+                <img src="Architecture/15.jpeg" alt="Стара бібліотека міста">
+                <div class="card-content">
+                    <h4>Центральна Бібліотека</h4>
+                    <p>Головне книгосховище міста. Будівля в стилі неоренесансу, що втілює цінність знань та освіти.</p>
+                </div>
+            </div>
+            
+        </div>
+        
+    </section>
+    
+    <footer class="footer">
+        <div class="footer-content container">
+            <div class="footer-info">
+                <p>Івано-Вікторськ. Твій віртуальний європейський дім. &copy; Князівство.</p>
+                <p style="margin-top: 5px;">Створено як політична та культурна репрезентація в цифровому просторі.</p>
+            </div>
+            
+            <div class="footer-logos">
+                <img src="Івано-Вікторськ.png" alt="Герб Івано-Вікторськ" title="Герб Івано-Вікторськ">
+                <img src="APDPN.png" alt="Логотип APDPN" title="Цифрова інфраструктура Князівства (APDPN)">
+            </div>
+        </div>
+    </footer>
+    
+</body>
+</html>

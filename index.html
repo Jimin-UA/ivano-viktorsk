@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ІВАНО-ВІКТОРСЬК: Місто, Народжене Культурою</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <style>
+        /* БАЗОВІ ЗМІННІ ТА СТИЛІ */
+        :root {
+            --color-primary: #1c2e40; /* Темний синій/майже чорний (основа) */
+            --color-secondary: #f4f4f4; /* Світлий сіро-беж (фон) */
+            --color-accent: #ff914d; /* Яскравий помаранчевий/Охра (Акцент) */
+            --font-main: 'Inter', sans-serif;
+            --font-title: 'Oswald', sans-serif; 
+        }
+
+        body {
+            font-family: var(--font-main);
+            color: var(--color-primary);
+            margin: 0;
+            background-color: var(--color-secondary);
+            line-height: 1.7;
+            font-size: 16px;
+        }
+        
+        * {
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* 1. ШАПКА ТА НАВІГАЦІЯ */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            background-color: white;
+            z-index: 100;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo img.crest {
+            height: 40px; 
+            margin-right: 15px;
+            transition: transform 0.3s;
+        }
+        
+        .logo:hover img.crest {
+            transform: scale(1.05) rotate(-2deg);
+        }
+
+        .logo h1 {
+            font-family: var(--font-title);
+            font-size: 1.6em;
+            letter-spacing: 1px;
+            margin: 0;
+            color: var(--color-primary);
+            font-weight: 700;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--color-primary);
+            margin-left: 25px;
+            font-weight: 500;
+            transition: color 0.3s, border-bottom 0.3s;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            padding-bottom: 3px;
+        }
+
+        .nav-menu a:hover {
+            color: var(--color-accent);
+            border-bottom: 2px solid var(--color-accent);
+        }
+
+        /* 2. HERO SECTION (ГОЛОВНИЙ БЛОК) */
+        .hero {
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            /* ВАЖЛИВА ЗМІНА: ФОН З base_1.png та прозорим накладанням */
+            background: linear-gradient(rgba(28, 46, 64, 0.7), rgba(28, 46, 64, 0.7)), url('base_1.png'); 
+            background-size: cover;
+            background-position: center;
+            color: white;
+            /* Збільшуємо тінь тексту для кращої читабельності на детальному фоні */
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.9); 
+            animation: fadeIn 2s ease-out; 
+        }
+
+        .hero h2 {
+            font-family: var(--font-title);
+            font-size: 4.5em;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0; 
+            animation: slideUp 1s 0.5s forwards;
+        }
+
+        .hero p {
+            font-size: 1.5em;
+            font-weight: 300;
+            opacity: 0; 
+            animation: slideUp 1s 0.8s forwards;
+        }
+        
+        /* 3. СТИЛІ КНОПКИ */
+        .btn-main {
+            display: inline-block;
+            margin-top: 35px;
+            padding: 15px 35px;
+            background-color: var(--color-accent); 
+            color: var(--color-primary); 
+            text-decoration: none;
+            border-radius: 3px;
+            font-weight: 700;
+            transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: slideUp 1s 1.1s forwards;
+            font-family: var(--font-title);
+        }
+
+        .btn-main:hover {
+            background-color: #ffb380; 
+            transform: translateY(-3px); 
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 4. КОНТЕНТНІ СЕКЦІЇ */
+        .section {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .section-title {
+            font-family: var(--font-title);
+            font-size: 2.8em;
+            margin-bottom: 50px;
+            color: var(--color-primary);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+
+        .culture-text {
+            max-width: 900px;
+            margin: 0 auto;
+            font-size: 1.15em;
+            font-style: italic;
+            padding: 30px;
+            background-color: white;
+            border-left: 5px solid var(--color-accent);
+            text-align: left;
+        }
+
+        /* 5. ПІДВАЛ З ЛОГОТИПАМИ */
+        .footer {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 40px 0;
+            font-size: 0.9em;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .footer-info {
+            text-align: left;
+            flex-grow: 1;
+        }
+
+        .footer-logos {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .footer-logos img {
+            height: 35px; 
+            filter: invert(1); 
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .footer-logos img:hover {
+            opacity: 1;
+        }
+        
+        /* 6. KEYFRAME АНІМАЦІЇ */
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="Івано-Вікторськ.png" alt="Герб Івано-Вікторськ" class="crest">
+                <h1>ІВАНО-ВІКТОРСЬК</h1>
+            </a>
+            <nav class="nav-menu">
+                <a href="index.html">Головна</a>
+                <a href="city.html">Місто</a>
+                <a href="charter.html">Устав</a>
+                <a href="mayor.html">Мерія</a>
+                <a href="architecture.html">Архітектура</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content container">
+            <h2>МІСТО, НАРОДЖЕНЕ КУЛЬТУРОЮ</h2>
+            <p>Віртуальна столиця Князівства. Чистий український дух у сучасному європейському просторі.</p>
+            
+            <a href="architecture.html" class="btn-main">Почати Дослідження Міста</a>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <h3 class="section-title">Філософія Івано-Вікторська</h3>
+            <blockquote class="culture-text">
+                <p>«Івано-Вікторськ — це втілення української ідеї про європейський дім. Це не просто пікселі, це спадок, закладений Іваном та Віктором, і осмислений онуком, Михайлом I. Тут кожен камінь (навіть віртуальний) дихає історією від XVIII століття, а кожен проспект дивиться у майбутнє. Ми — простір чистого українського духу та сучасної європейської естетики». </p>
+                <cite>— З Уставу Князівства.</cite>
+            </blockquote>
+        </div>
+    </section>
+    
+    <section class="section" style="background-color: white;">
+        <div class="container">
+            <h3 class="section-title">Від XVIII Століття до Сучасності</h3>
+            <p style="max-width: 900px; margin: 0 auto; font-size: 1.05em;">Івано-Вікторськ віртуально повторює найкращі традиції забудови Західної України. Ми поєднали шарм історичного центру 18-19 століть з інноваційними та екологічними архітектурними рішеннями нового європейського міста. Дізнайтеся, як віртуальне середовище стає політичною реальністю.</p>
+            
+            <a href="architecture.html" class="btn-main" 
+               style="background-color: var(--color-primary); color: white; margin-top: 50px;">
+               ОГЛЯНУТИ АРХІТЕКТУРУ
+            </a>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-info">
+                <p>Івано-Вікторськ. Твій віртуальний європейський дім. &copy; Князівство.</p>
+                <p style="margin-top: 5px;">Створено як політична та культурна репрезентація в цифровому просторі.</p>
+            </div>
+            
+            <div class="footer-logos">
+                <img src="Івано-Вікторськ.png" alt="Герб Івано-Вікторськ" title="Герб Івано-Вікторськ">
+                <img src="APDPN.png" alt="Логотип APDPN" title="Цифрова інфраструктура Князівства (APDPN)">
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
