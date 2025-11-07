@@ -5,16 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Івано-Вікторськ: Історія та Культурний Код Міста</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* БАЗОВІ ЗМІННІ ТА СТИЛІ (ПЕРЕЙМАЄМО З index.html) */
+        /* БАЗОВІ ЗМІННІ ТА СТИЛІ */
         :root {
-            --color-primary: #1c2e40;
-            --color-secondary: #f4f4f4;
-            --color-accent: #ff914d;
-            --font-main: 'Inter', sans-serif;
-            --font-title: 'Oswald', sans-serif; 
+            --color-primary: #1c2e40; /* Темний синій/майже чорний (основа) */
+            --color-secondary: #ffffff; /* Чистий білий (фон) */
+            --color-light-bg: #f7f7f7; /* Світло-сірий для секцій */
+            --color-accent: #33a340; /* ЗЕЛЕНИЙ акцент для посилань */
+            --color-orange-accent: #ff914d; /* Помаранчевий для кнопок */
+            --font-main: 'Montserrat', sans-serif;
+            --font-serif: 'Playfair Display', serif; /* Шрифт із засічками для заголовків */
         }
 
         body {
@@ -22,176 +24,179 @@
             color: var(--color-primary);
             margin: 0;
             background-color: var(--color-secondary);
-            line-height: 1.7;
-            font-size: 16px;
+            line-height: 1.6;
+            font-size: 17px;
         }
         
         * { box-sizing: border-box; }
 
+        h2, h3 {
+            font-family: var(--font-serif);
+            line-height: 1.2;
+            margin-top: 0;
+            font-weight: 700;
+        }
+
         .container {
-            max-width: 1200px;
+            max-width: 1280px; 
             margin: 0 auto;
-            padding: 0 20px;
+            padding: 0 25px;
         }
 
         /* 1. ШАПКА ТА НАВІГАЦІЯ */
         .header {
-            display: flex; justify-content: center;
-            padding: 10px 0; border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-            position: sticky; top: 0; background-color: white; z-index: 100;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            display: flex; justify-content: center; align-items: center;
+            padding: 12px 0; position: sticky; top: 0; 
+            background-color: var(--color-secondary); z-index: 100;
+            box-shadow: 0 1px 10px rgba(0, 0, 0, 0.08); 
         }
 
-        .header .container {
+        .header > .container {
             display: flex; justify-content: space-between; align-items: center;
         }
-
+        
         .logo { display: flex; align-items: center; text-decoration: none; }
-        .logo img.crest { height: 40px; margin-right: 15px; transition: transform 0.3s; }
-        .logo:hover img.crest { transform: scale(1.05) rotate(-2deg); }
-        .logo h1 { font-family: var(--font-title); font-size: 1.6em; letter-spacing: 1px; margin: 0; color: var(--color-primary); font-weight: 700; }
+        .logo img.crest { height: 45px; margin-right: 12px; }
+        .logo h1 { font-family: var(--font-main); font-size: 1.8em; letter-spacing: 0.5px; margin: 0; color: var(--color-primary); font-weight: 700; }
         
         .nav-menu a {
-            text-decoration: none; color: var(--color-primary); margin-left: 25px;
-            font-weight: 500; transition: color 0.3s, border-bottom 0.3s;
-            text-transform: uppercase; font-size: 0.9em; padding-bottom: 3px;
+            text-decoration: none; color: var(--color-primary); margin-left: 30px;
+            font-weight: 500; transition: color 0.3s;
+            text-transform: uppercase; font-size: 0.9em; padding: 5px 0;
             white-space: nowrap;
         }
-        .nav-menu a:hover { color: var(--color-accent); border-bottom: 2px solid var(--color-accent); }
+        .nav-menu a:hover { color: var(--color-accent); }
+        .nav-menu a.active { color: var(--color-accent); border-bottom: 2px solid var(--color-accent); }
+
 
         /* 2. СТИЛІ КОНТЕНТУ СТОРІНКИ "МІСТО" */
-        .hero-internal { padding: 60px 0; background-color: white; border-bottom: 1px solid #ddd; }
+        .hero-internal { padding: 80px 0 50px; background-color: white; }
         .section-title {
-            font-family: var(--font-title); font-size: 3.5em; text-align: center;
-            margin-bottom: 20px; color: var(--color-primary); text-transform: uppercase;
-            letter-spacing: 2px;
+            font-size: 3.2em;
+            text-align: center;
+            margin-bottom: 15px;
+            color: var(--color-primary);
+            font-weight: 800;
         }
-        .subtitle { text-align: center; font-size: 1.2em; color: #666; margin-bottom: 50px; }
+        .subtitle { text-align: center; font-size: 1.1em; color: #555; margin-bottom: 50px; font-weight: 300; }
 
         /* ІСТОРІЯ - БЛОКИ */
-        .history-intro { 
-            display: flex; gap: 40px; align-items: flex-start; 
-            margin-bottom: 80px; /* Забезпечує простір до каруселі */
-        }
-        .history-crest {
-            flex-shrink: 0; width: 250px; text-align: center; padding: 20px;
-            border: 1px solid #ddd; background-color: white; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-            opacity: 0; animation: fadeIn 1s 0.2s forwards;
-        }
-        .history-crest img { max-width: 100%; height: auto; margin-bottom: 15px; }
-        .history-text { flex-grow: 1; }
-        .history-text h3 { font-family: var(--font-title); font-size: 1.8em; color: var(--color-accent); text-transform: uppercase; margin-top: 0; }
-        
-        /* 3. СТИЛІ КАРОСЕЛІ ЗОБРАЖЕНЬ */
-        .gallery-wrapper {
-            padding: 80px 0;
+        .history-section {
+            padding: 50px 0 100px;
             background-color: white;
         }
         
-        .carousel-container {
-            position: relative;
-            max-width: 100%;
-            margin: 0 auto;
+        .history-intro-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 50px;
+            max-width: 1000px;
+            margin: 0 auto 50px;
+            padding: 40px;
+            border: 1px solid #eee;
+            background-color: var(--color-light-bg);
         }
 
-        .carousel {
-            display: flex;
-            overflow-x: scroll;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            padding: 30px 0;
+        .history-crest { text-align: center; padding: 0; border: none; background: none; }
+        .history-crest img { max-width: 150px; height: auto; margin-bottom: 10px; }
+        .history-crest p { font-family: var(--font-main); color: var(--color-primary); font-size: 0.9em; font-weight: 600; }
+
+        .history-text h3 {
+            font-family: var(--font-serif);
+            font-size: 2.5em;
+            color: var(--color-primary);
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+        .history-text p { font-size: 1em; margin-bottom: 20px; }
+
+
+        /* 3. СЕКЦІЯ "МІСТА" (КАРТКИ В СІТЦІ) */
+        .gallery-wrapper {
+            padding: 80px 0;
+            background-color: white;
+            text-align: center;
+        }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
             gap: 40px;
-            /* Зсув для показу бічних елементів */
-            margin: 0 calc((100% - 350px) / 2); 
-            scrollbar-width: none;
+            margin-top: 50px;
         }
-        .carousel::-webkit-scrollbar { display: none; }
         
-        .carousel-item {
-            flex: 0 0 350px;
-            scroll-snap-align: center;
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-            position: relative;
+        .gallery-card {
             background-color: var(--color-secondary);
-            border-radius: 8px;
+            border: 1px solid #ddd;
             overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            cursor: pointer;
         }
         
-        .carousel-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        .gallery-card:hover {
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
         }
         
-        .carousel-item img {
+        .gallery-card img {
             width: 100%;
-            height: 250px;
+            height: 220px;
             object-fit: cover;
             display: block;
         }
         
-        .carousel-caption {
-            padding: 15px;
-            font-size: 0.95em; 
-            font-weight: 600;
+        .card-content { padding: 20px; text-align: left; }
+
+        .card-content h4 {
+            font-family: var(--font-serif);
+            font-size: 1.5em;
+            font-weight: 700;
             color: var(--color-primary);
-            min-height: 50px;
-            line-height: 1.3;
+            margin-bottom: 10px;
         }
 
-        /* СТРІЛКИ ДЛЯ НАВІГАЦІЇ */
-        .arrow {
-            position: absolute; top: 50%; transform: translateY(-50%); z-index: 10;
-            font-size: 40px; cursor: pointer; color: var(--color-primary);
-            background-color: white; border-radius: 50%; padding: 5px 15px;
-            line-height: 1; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-            transition: background-color 0.3s, color 0.3s, transform 0.3s;
-            user-select: none; opacity: 0.8;
-        }
-        .arrow:hover { color: var(--color-accent); background-color: var(--color-primary); transform: translateY(-50%) scale(1.1); }
-        .arrow.left { left: 20px; }
-        .arrow.right { right: 20px; }
+        .card-content p { font-size: 0.9em; color: #555; margin-bottom: 20px; }
 
-        /* 4. СТИЛІ МОДАЛЬНОГО ВІКНА */
+        .arrow-link {
+            display: inline-flex; align-items: center; text-decoration: none;
+            color: var(--color-accent); font-weight: 600; font-size: 0.95em;
+            text-transform: uppercase; letter-spacing: 1px; transition: transform 0.3s;
+        }
+
+        .arrow-link:hover { transform: translateX(5px); color: var(--color-primary); }
+        .arrow-link::after { content: '→'; margin-left: 8px; font-size: 1.5em; line-height: 1; }
+
+        /* 4. СТИЛІ МОДАЛЬНОГО ВІКНА (без змін) */
         .modal {
             display: none; position: fixed; z-index: 200; padding-top: 60px;
             left: 0; top: 0; width: 100%; height: 100%; overflow: auto;
-            background-color: rgba(0, 0, 0, 0.9); animation: fadeInModal 0.3s;
+            background-color: rgba(0, 0, 0, 0.9);
         }
-
         .modal-content { margin: auto; display: block; width: 90%; max-width: 900px; }
         #modal-image { width: 100%; max-height: 80vh; object-fit: contain; }
         #modal-caption {
             margin: 10px auto; display: block; width: 90%; max-width: 900px;
             text-align: center; color: #ccc; padding: 10px 0; font-size: 1.2em;
         }
-
         .close {
             position: absolute; top: 15px; right: 35px; color: #f1f1f1;
             font-size: 40px; font-weight: bold; transition: 0.3s;
         }
         .close:hover, .close:focus { color: var(--color-accent); text-decoration: none; cursor: pointer; }
 
-        /* 5. ПІДВАЛ */
+        /* 5. ПІДВАЛ (без змін) */
         .footer { background-color: var(--color-primary); color: white; padding: 40px 0; font-size: 0.9em; }
         .footer-content { display: flex; justify-content: space-between; align-items: center; gap: 40px; }
-        .footer-info { text-align: left; flex-grow: 1; }
         .footer-logos { display: flex; align-items: center; gap: 20px; }
         .footer-logos img { height: 35px; filter: invert(1); opacity: 0.8; transition: opacity 0.3s; }
         
-        /* 6. АНІМАЦІЇ */
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-        @keyframes fadeInModal { from { opacity: 0; } to { opacity: 1; } }
-
-        /* 7. АДАПТИВНІСТЬ */
+        /* 6. АДАПТИВНІСТЬ (без змін) */
         @media (max-width: 1024px) {
             .nav-menu a { margin-left: 15px; }
             .section-title { font-size: 2.5em; }
-            
-            /* Блоки історії */
-            .history-intro { flex-direction: column; gap: 30px; align-items: center; }
-            .history-crest { width: 100%; max-width: 300px; }
+            .history-intro-grid { grid-template-columns: 1fr; padding: 30px; }
+            .history-crest img { max-width: 120px; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 30px; }
         }
 
         @media (max-width: 768px) {
@@ -200,22 +205,42 @@
             .nav-menu a { margin: 5px 10px; }
             .section-title { font-size: 2em; margin-bottom: 10px; }
             .subtitle { font-size: 1em; margin-bottom: 30px; }
-
-            /* Карусель - ховаємо стрілки на мобільних, покладаємося на скрол */
-            .arrow { display: none; }
-            .carousel { 
-                /* Вирівнювання по краю на мобільних */
-                margin: 0 -20px;
-                padding: 30px 20px;
-                gap: 20px;
-            }
-            .carousel-item { flex: 0 0 80vw; }
-
-            /* Підвал */
+            .gallery-grid { grid-template-columns: 1fr; gap: 20px; }
             .footer-content { flex-direction: column; text-align: center; }
-            .footer-info { text-align: center; }
-            .footer-logos { margin-top: 15px; }
         }
+
+        /* 7. АНІМАЦІЇ ПРИ ПРОКРУТЦІ (НОВІ СТИЛІ) */
+        
+        /* Базове приховування та анімація для секцій */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(40px);
+            /* Кубічна крива для плавного, сучасного руху */
+            transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1); 
+        }
+
+        /* Клас, який додається при появі в області видимості */
+        .animate-on-scroll.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Стилі для індивідуальних карток галереї (stagger effect) */
+        .gallery-grid .gallery-card {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+
+        /* Додаємо затримку тільки коли батьківський елемент стає видимим */
+        .gallery-wrapper.is-visible .gallery-card { opacity: 1; transform: translateY(0); }
+        .gallery-wrapper.is-visible .gallery-card:nth-child(1) { transition-delay: 0.1s; }
+        .gallery-wrapper.is-visible .gallery-card:nth-child(2) { transition-delay: 0.2s; }
+        .gallery-wrapper.is-visible .gallery-card:nth-child(3) { transition-delay: 0.3s; }
+        .gallery-wrapper.is-visible .gallery-card:nth-child(4) { transition-delay: 0.4s; }
+        .gallery-wrapper.is-visible .gallery-card:nth-child(5) { transition-delay: 0.5s; }
+        .gallery-wrapper.is-visible .gallery-card:nth-child(6) { transition-delay: 0.6s; }
+
     </style>
 </head>
 <body>
@@ -228,89 +253,97 @@
             </a>
             <nav class="nav-menu">
                 <a href="index.html">Головна</a>
-                <a href="city.html" style="color: var(--color-accent); border-bottom: 2px solid var(--color-accent);">Місто</a>
-                <a href="charter.html">Статут</a>
+                <a href="city.html" class="active">Місто</a>
+                <a href="charter.html">Устав</a>
                 <a href="mayor.html">Мерія</a>
                 <a href="architecture.html">Архітектура</a>
             </nav>
         </div>
     </header>
 
-    <section class="hero-internal">
+    <section class="hero-internal animate-on-scroll">
         <div class="container">
-            <h2 class="section-title">ІСТОРІЯ ТА КУЛЬТУРНИЙ КОД МІСТА</h2>
+            <h2 class="section-title">Історія та культурний код міста</h2>
             <p class="subtitle">Івано-Вікторськ — це більше, ніж віртуальний простір. Це простір пам'яті, політики та культури.</p>
         </div>
     </section>
-
-    <section class="container" style="padding-top: 80px;">
-        <div class="history-intro">
+    
+    <section class="history-section">
+        <div class="container history-intro-grid animate-on-scroll">
             
             <div class="history-crest">
                 <img src="Івано-Вікторськ.png" alt="Герб міста Івано-Вікторськ">
-                <p style="font-family: var(--font-title); color: var(--color-accent); font-size: 1.1em;">Герб: Символ спадщини Івана та Віктора</p>
+                <p>Символ спадщини Івана та Віктора</p>
             </div>
 
             <div class="history-text">
                 <h3>Епоха Заснування (Початок XXI століття)</h3>
-                <p>Івано-Вікторськ не виник на стародавній землі. Він був свідомо створений у цифровому просторі Князівством як політичний та культурний маніфест. Назва вшановує двох ключових предків Засновника — <strong>Івана</strong> (батька Віктора) та <strong>Віктора</strong> (діда Михайла I). Цим актом Дід Михайло I заклав не просто місто, а цілу <strong>генеалогічну культуру</strong>.</p>
-                <p>Місто стало відповіддю на обмеженість матеріальних ресурсів. Князівство обрало віртуальну політику, доводячи, що ідентичність, політика та культура можуть процвітати незалежно від фізичних кордонів.</p>
+                <p>Івано-Вікторськ був свідомо створений у цифровому просторі Князівством як політичний та культурний маніфест. Назва вшановує двох ключових предків Засновника — **Івана** (батька Віктора) та **Віктора** (діда Михайла I). Цим актом Дід Михайло I заклав не просто місто, а цілу **генеалогічну культуру**.</p>
+                <p>Місто стало відповіддю на обмеженість матеріальних ресурсів. Князівство обрало віртуальну політику, доводячи, що ідентичність, політика та культура можуть процвітати незалежно від фізичних кордонів. Івано-Вікторськ віртуально повторює найкращі традиції забудови Західної України.</p>
             </div>
         </div>
     </section>
-
-    <section class="gallery-wrapper">
+    <section class="gallery-wrapper animate-on-scroll">
         <div class="container">
-            <h3 class="section-title" style="margin-bottom: 30px;">Віртуальні Горизонти Івано-Вікторська</h3>
+            <h3 class="section-title" style="margin-bottom: 30px;">Архітектурний код міста</h3>
 
-            <div class="carousel-container">
-                <span class="arrow left" onclick="scrollCarousel(-1)" role="button" aria-label="Попереднє зображення">&lt;</span>
-                <div class="carousel" id="city-carousel">
-                    
-                    <div class="carousel-item" onclick="openModal('Місто/1.png', 'Панорама центру міста, в центрі якої розташована Ратуша')" tabindex="0" role="button">
-                        <img src="Місто/1.png" alt="Панорама центру міста з Ратушею">
-                        <div class="carousel-caption">Панорама центру міста. В центрі — Ратуша.</div>
-                    </div>
-                    
-                    <div class="carousel-item" onclick="openModal('Місто/2.png', 'Вулиця Винниченська: центральна артерія міста, названа на честь родового гнізда Івана та Віктора')" tabindex="0" role="button">
-                        <img src="Місто/2.png" alt="Вулиця Винниченська">
-                        <div class="carousel-caption">Вулиця Винниченська — центральна артерія.</div>
-                    </div>
-                    
-                    <div class="carousel-item" onclick="openModal('Місто/3.png', 'Ратуша Івано-Вікторська. Дизайн натхненний ратушами західноукраїнських міст.')" tabindex="0" role="button">
-                        <img src="Місто/3.png" alt="Ратуша Івано-Вікторська">
-                        <div class="carousel-caption">Ратуша Івано-Вікторська (натхнення Західна Україна).</div>
-                    </div>
-
-                    <div class="carousel-item" onclick="openModal('Місто/4.png', 'Вулиця Державна — перша історична вулиця, що демонструє архітектурний код міста')" tabindex="0" role="button">
-                        <img src="Місто/4.png" alt="Вулиця Державна">
-                        <div class="carousel-caption">Вулиця Державна — перша історична вулиця.</div>
-                    </div>
-
-                    <div class="carousel-item" onclick="openModal('Місто/5.png', 'Маленька греко-католицька церква на околиці міста, символ духовної спадщини')" tabindex="0" role="button">
-                        <img src="Місто/5.png" alt="Греко-католицька церква">
-                        <div class="carousel-caption">Маленька греко-католицька церква на околиці.</div>
-                    </div>
-                    
-                    <div class="carousel-item" onclick="openModal('Місто/6.png', 'Стела з назвою міста «ІВАНО-ВІКТОРСЬК» українською мовою, встановлена навпроти Ратуші')" tabindex="0" role="button">
-                        <img src="Місто/6.png" alt="Стела з назвою міста">
-                        <div class="carousel-caption">Стела з назвою міста (навпроти Ратуші).</div>
-                    </div>
-
-                    <div class="carousel-item" onclick="openModal('Місто/7.png', 'Міське адміністративне управління. Рік 1925 символізує рік заснування міста.')" tabindex="0" role="button">
-                        <img src="Місто/7.png" alt="Міське адміністративне управління, 1925">
-                        <div class="carousel-caption">Адміністративна будівля. Рік заснування: 1925.</div>
-                    </div>
-
-                    <div class="carousel-item" onclick="openModal('Місто/8.png', 'Університет правових відносин. Заснований для конституційного захисту прав громадян та запобігання дискримінації.')" tabindex="0" role="button">
-                        <img src="Місто/8.png" alt="Університет правових відносин">
-                        <div class="carousel-caption">Університет правових відносин.</div>
+            <div class="gallery-grid">
+                
+                <div class="gallery-card" onclick="openModal('Місто/1.png', 'Панорама центру міста, в центрі якої розташована Ратуша')" tabindex="0" role="button">
+                    <img src="Місто/1.png" alt="Панорама центру міста з Ратушею">
+                    <div class="card-content">
+                        <h4>Центр міста</h4>
+                        <p>Панорама центру, що поєднує історичний шарм та сучасні зелені зони. В центрі — Ратуша.</p>
+                        <a href="#" class="arrow-link">ОГЛЯНУТИ ДЕТАЛЬНІШЕ</a>
                     </div>
                 </div>
-                <span class="arrow right" onclick="scrollCarousel(1)" role="button" aria-label="Наступне зображення">&gt;</span>
+                
+                <div class="gallery-card" onclick="openModal('Місто/2.png', 'Вулиця Винниченська: центральна артерія міста, названа на честь родового гнізда Івана та Віктора')" tabindex="0" role="button">
+                    <img src="Місто/2.png" alt="Вулиця Винниченська">
+                    <div class="card-content">
+                        <h4>Вулиця Винниченська</h4>
+                        <p>Центральна артерія, названа на честь родового гнізда засновників. Демонструє стиль XIX століття.</p>
+                        <a href="#" class="arrow-link">ОГЛЯНУТИ ДЕТАЛЬНІШЕ</a>
+                    </div>
+                </div>
+                
+                <div class="gallery-card" onclick="openModal('Місто/3.png', 'Ратуша Івано-Вікторська. Дизайн натхненний ратушами західноукраїнських міст.')" tabindex="0" role="button">
+                    <img src="Місто/3.png" alt="Ратуша Івано-Вікторська">
+                    <div class="card-content">
+                        <h4>Ратуша Івано-Вікторська</h4>
+                        <p>Символ міської влади. Дизайн натхненний архітектурними елементами західноукраїнських міст.</p>
+                        <a href="#" class="arrow-link">ОГЛЯНУТИ ДЕТАЛЬНІШЕ</a>
+                    </div>
+                </div>
+
+                <div class="gallery-card" onclick="openModal('Місто/4.png', 'Вулиця Державна — перша історична вулиця, що демонструє архітектурний код міста')" tabindex="0" role="button">
+                    <img src="Місто/4.png" alt="Вулиця Державна">
+                    <div class="card-content">
+                        <h4>Вулиця Державна</h4>
+                        <p>Перша історична вулиця, що демонструє класичний архітектурний код Князівства.</p>
+                        <a href="#" class="arrow-link">ОГЛЯНУТИ ДЕТАЛЬНІШЕ</a>
+                    </div>
+                </div>
+
+                <div class="gallery-card" onclick="openModal('Місто/5.png', 'Маленька греко-католицька церква на околиці міста, символ духовної спадщини')" tabindex="0" role="button">
+                    <img src="Місто/5.png" alt="Греко-католицька церква">
+                    <div class="card-content">
+                        <h4>Греко-католицька церква</h4>
+                        <p>Маленька церква на околиці міста, що символізує духовну та культурну спадщину.</p>
+                        <a href="#" class="arrow-link">ОГЛЯНУТИ ДЕТАЛЬНІШЕ</a>
+                    </div>
+                </div>
+                
+                <div class="gallery-card" onclick="openModal('Місто/6.png', 'Стела з назвою міста «ІВАНО-ВІКТОРСЬК» українською мовою, встановлена навпроти Ратуші')" tabindex="0" role="button">
+                    <img src="Місто/6.png" alt="Стела з назвою міста">
+                    <div class="card-content">
+                        <h4>Стела міста</h4>
+                        <p>Стела з назвою «ІВАНО-ВІКТОРСЬК» українською мовою, встановлена біля головної площі.</p>
+                        <a href="#" class="arrow-link">ОГЛЯНУТИ ДЕТАЛЬНІШЕ</a>
+                    </div>
+                </div>
             </div>
             
-            <p style="margin-top: 40px; font-size: 0.9em; color: #777;">*Використовуйте мишу, стрілки або свайп для прокрутки галереї. Натисніть на зображення для детального перегляду.</p>
         </div>
     </section>
 
@@ -320,42 +353,27 @@
         <div id="modal-caption"></div>
     </div>
 
-    <footer class="footer">
-        <div class="footer-content container">
-            <div class="footer-info">
-                <p>Івано-Вікторськ. Твій віртуальний європейський дім. &copy; Князівство.</p>
-                <p style="margin-top: 5px;">Створено як політична та культурна репрезентація в цифровому просторі.</p>
-            </div>
-            
-            <div class="footer-logos">
-                <img src="Івано-Вікторськ.png" alt="Герб Івано-Вікторськ" title="Герб Івано-Вікторськ">
-                <img src="APDPN.png" alt="Логотип APDPN" title="Цифрова інфраструктура Князівства (APDPN)">
+    <footer class="footer animate-on-scroll">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <p>Івано-Вікторськ. Твій віртуальний європейський дім. &copy; Князівство.</p>
+                    <p style="margin-top: 5px;">Створено як політична та культурна репрезентація в цифровому просторі.</p>
+                </div>
+                
+                <div class="footer-logos">
+                    <img src="Івано-Вікторськ.png" alt="Герб Івано-Вікторськ" title="Герб Івано-Вікторськ">
+                    <img src="APDPN.png" alt="Логотип APDPN" title="Цифрова інфраструктура Князівства (APDPN)">
+                </div>
             </div>
         </div>
     </footer>
     
     <script>
-        // --- СКРИПТ ДЛЯ АНІМАЦІЇ ПРИ СКРОЛІ (для герба) ---
-        function isElementInViewport(el) {
-          const rect = el.getBoundingClientRect();
-          return rect.top < (window.innerHeight || document.documentElement.clientHeight) * 0.8 && rect.bottom > 0;
-        }
-
-        function handleScrollAnimation() {
-          const introBlock = document.querySelector('.history-crest');
-          if (introBlock && isElementInViewport(introBlock) && !introBlock.classList.contains('animated')) {
-              introBlock.classList.add('animated'); 
-          }
-        }
-        
-        window.addEventListener('scroll', handleScrollAnimation);
-        handleScrollAnimation(); 
-
-        // --- СКРИПТ ДЛЯ КАРОСЕЛІ ТА МОДАЛЬНОГО ВІКНА ---
+        // --- СКРИПТ ДЛЯ МОДАЛЬНОГО ВІКНА ---
         const modal = document.getElementById("imageModal");
         const modalImg = document.getElementById("modal-image");
         const captionText = document.getElementById("modal-caption");
-        const carousel = document.getElementById('city-carousel');
 
         // Відкриття модального вікна
         function openModal(imagePath, description) {
@@ -376,20 +394,36 @@
             closeModal();
           }
         }
-        
-        // Функціонал стрілок каруселі
-        function scrollCarousel(direction) {
-            const itemElement = carousel.querySelector('.carousel-item');
-            if (!itemElement) return;
 
-            // Використовуємо clientWidth елемента + gap (40px)
-            const itemWidth = itemElement.clientWidth + 40; 
-            
-            carousel.scrollBy({
-                left: direction * itemWidth,
-                behavior: 'smooth'
+        // --- Intersection Observer для анімації при прокрутці (НОВИЙ СКРИПТ) ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null, // В'юпорт
+                rootMargin: '0px',
+                threshold: 0.1 // Спрацює, коли 10% елемента буде видимим
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // Додаємо клас для запуску анімації
+                        entry.target.classList.add('is-visible');
+                        // Припиняємо спостереження, щоб анімація не повторювалася
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Цільові елементи для анімації
+            const sectionsToAnimate = document.querySelectorAll('.animate-on-scroll');
+            sectionsToAnimate.forEach(section => {
+                // Виключаємо хедер, він завжди видимий
+                if (!section.classList.contains('header')) { 
+                    observer.observe(section);
+                }
             });
-        }
+        });
+
     </script>
 
 </body>
